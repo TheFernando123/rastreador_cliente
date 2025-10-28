@@ -1,0 +1,55 @@
+:root {
+  --color-primary: #b71c1c;
+  --color-primary-opaco: #cd3d1f;
+  --color-background: #fafafaff;
+  --color-black-custom: #1e1e1c;
+  --color-row-bg: #ffe4dc33;
+  --color-green: #22c55e;
+  --color-danger: #ff0000;
+  --color-blue: #5656ffff;
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+.company-logo {
+  width: 180px;
+  height: auto;
+  padding: 8px;
+  z-index: 1050;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.btn-primary-custom {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--color-primary-opaco);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
