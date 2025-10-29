@@ -91,29 +91,13 @@ const GuiaCompleta: React.FC = () => {
           onChange={(e) => setFolio(e.target.value)}
           placeholder="Ingresa el folio"
           className="form-control"
-          style={{ borderColor: "var(--color-black-custom)" }}
         />
 
-        <button
-          onClick={buscarPorFolio}
-          className="btn btn-primary-custom"
-          style={{
-            backgroundColor: "var(--color-primary)",
-            color: "white",
-            borderColor: "var(--color-primary)",
-          }}
-        >
+        <button onClick={buscarPorFolio} className="btn btn-primary-custom">
           Buscar
         </button>
 
-        <button
-          onClick={limpiarBusqueda}
-          className="btn btn-outline-secondary"
-          style={{
-            borderColor: "var(--color-black-custom)",
-            color: "var(--color-black-custom)",
-          }}
-        >
+        <button onClick={limpiarBusqueda} className="btn btn-outline-secondary">
           Limpiar
         </button>
       </div>
@@ -138,7 +122,7 @@ const GuiaCompleta: React.FC = () => {
           style={{
             borderColor: estadoActual.Movimientos.includes("Entregado")
               ? "var(--color-green)"
-              : "var(--color-blue)",
+              : "var(--color-primary-opaco)",
             transition: "border-color 0.3s",
             animation: "fadeInUp 0.6s ease-out 0.1s",
             animationFillMode: "both",
@@ -149,9 +133,8 @@ const GuiaCompleta: React.FC = () => {
             <h6
               className="text-uppercase mb-2"
               style={{
-                color: estadoActual.Movimientos.includes("Entregado")
-                  ? "var(--color-green)"
-                  : "var(--color-primary-opaco)",
+                color: "var(--color-primary)",
+                fontWeight: "bold",
               }}
             >
               Estado Actual
@@ -177,6 +160,7 @@ const GuiaCompleta: React.FC = () => {
             animation: "fadeInUp 0.6s ease-out 0.2s",
             animationFillMode: "both",
             opacity: 0,
+            borderRadius: "0.5rem",
           }}
         >
           <div
@@ -184,14 +168,14 @@ const GuiaCompleta: React.FC = () => {
             style={{
               backgroundColor: "var(--color-primary-opaco)",
               color: "white",
+              fontWeight: "bold",
+              fontSize: "1.1rem",
             }}
           >
-            <strong>Datos del Envío</strong>
+            Datos del Envío
           </div>
           <div className="card-body">
-            {/* Diseño de 2 columnas para mejor lectura */}
             <div className="row">
-              {/* Columna Izquierda */}
               <div className="col-md-6 border-end">
                 <p className="mb-2">
                   <strong style={{ color: "var(--color-primary)" }}>
@@ -208,7 +192,7 @@ const GuiaCompleta: React.FC = () => {
                   {envio.OficinaOrigen}
                 </p>
               </div>
-              {/* Columna Derecha */}
+              {/* Columna Derecha - Detalles de Destino y Costos */}
               <div className="col-md-6">
                 <p className="mb-2">
                   <strong className="text-muted">Receptor:</strong>{" "}
@@ -218,11 +202,18 @@ const GuiaCompleta: React.FC = () => {
                   <strong className="text-muted">Destino:</strong>{" "}
                   {envio.OficinaDestino}
                 </p>
+                {/* Solicitud de separación de Total y Seguro */}
+                <p className="mb-2">
+                  <strong style={{ color: "var(--color-black-custom)" }}>
+                    Total :
+                  </strong>{" "}
+                  ${envio.Total}
+                </p>
                 <p className="mb-2">
                   <strong style={{ color: "var(--color-green)" }}>
-                    Total (Seguro):
+                    Seguro :
                   </strong>{" "}
-                  ${envio.Total} (${envio.Seguro})
+                  ${envio.Seguro}
                 </p>
               </div>
             </div>
@@ -230,26 +221,24 @@ const GuiaCompleta: React.FC = () => {
         </div>
       )}
 
-      {/* Historial de movimientos (Timeline) */}
+      {/* Historial de movimientos (Tabla con encabezado negro) */}
       {movimientos.length > 0 && (
-        <div className="card shadow-md">
+        <div className="card shadow-md border-0">
           <div
             className="card-header"
             style={{
               backgroundColor: "var(--color-black-custom)",
               color: "white",
+              fontWeight: "bold",
+              fontSize: "1.1rem",
+              borderRadius: "0.5rem 0.5rem 0 0",
             }}
           >
-            <strong>Historial de Movimientos</strong>
+            Historial de Movimientos
           </div>
           <div className="card-body p-0">
             <table className="table mb-0">
-              <thead
-                style={{
-                  backgroundColor: "var(--color-black-custom)",
-                  color: "white",
-                }}
-              >
+              <thead>
                 <tr>
                   <th>Fecha y hora</th>
                   <th>Movimiento</th>
